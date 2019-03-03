@@ -14,15 +14,16 @@ include 'inc/quiz.php';
     <div class="container">
         <div id="quiz-box">
 <?php 
-if ($currentQuestion <= $totalQuestions){
+if ($currentQuestion < $totalQuestions){
 ?>		
             <p class="breadcrumbs">Question <?php echo $currentQuestion ?> of <?php echo $totalQuestions?></p>
-            <p class="quiz">What is <?php echo $questions[$randomQuestion]['leftAdder']?> + <?php echo $questions[$randomQuestion]['rightAdder']?>?</p>
-            <form action="index.php?q=<?php echo $currentQuestion+1; ?>" method="post">
-                <input type="hidden" name="id" value="<?php echo $randomQuestion; ?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $questions[$randomQuestion]['correctAnswer']; ?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $questions[$randomQuestion]['firstIncorrectAnswer']; ?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $questions[$randomQuestion]['secondIncorrectAnswer']; ?>" />
+            <p class="quiz">What is 54 + 71?</p>
+            <form action="index.php" method="post">
+                <input type="hidden" name="id" value="0" />
+				<input type="hidden" name="<?php echo $currentQuestion; ?>" value="<?php echo $currentQuestion+1; ?>" />
+                <input type="submit" class="btn" name="answer" value="135" />
+                <input type="submit" class="btn" name="answer" value="125" />
+                <input type="submit" class="btn" name="answer" value="115" />
             </form>
         </div>
 <?php } ?>
