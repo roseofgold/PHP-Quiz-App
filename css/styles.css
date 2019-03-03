@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Playfair Display', serif;
+  background:#001746;
 }
 
 #quiz-box {
@@ -22,7 +23,7 @@ body {
 }
 
 .source {
-  font-size: 1.25rem;;
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
