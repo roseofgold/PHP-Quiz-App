@@ -14,7 +14,7 @@ include 'inc/quiz.php';
     <div class="container">
         <div id="quiz-box">
             <p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
-            <p class="quiz">What is <?php echo $_SESSION['questions'][0]->leftAdder; ?> + <?php echo $_SESSION['questions'][0]->rightAdder; ?>?</p>
+            <p class="quiz">What is <?php echo $leftAdder; ?> + <?php echo $rightAdder; ?>?</p>
             <form action="index.php?q=<?php echo $_SESSION['currentQuestion']+1; ?>" method="post">
                 <input type="hidden" name="id" value="0" />
                 <input type="submit" class="btn" name="answer" value="135" />

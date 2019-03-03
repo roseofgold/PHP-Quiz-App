@@ -34,6 +34,8 @@ do{
 $_SESSION['questionsAsked'][] = $randomQuestion;
 
 // Show random question
+$leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
+$rightAdder = $_SESSION['questions'][$randomQuestion]->rightAdder;
 
 // Shuffle answer buttons
 
