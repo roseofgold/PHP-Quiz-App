@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'inc/quiz.php';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
