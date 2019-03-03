@@ -16,6 +16,8 @@
  */
 
 // Include questions
+$_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
+var_dump($questions);
 
 // Keep track of which questions have been asked
 
