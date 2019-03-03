@@ -26,15 +26,11 @@ if (empty($currentQuestion)){
 	$currentQuestion = 1;
 }
 
-//Keep track of total questions answered and correctly.
-$questionsAnswered = 0;
+
+//Keep track of total questions answered correctly.
 if(!isset($_SESSION['questionsAnsweredCorrectly'])){
 	$_SESSION['questionsAnsweredCorrectly']=0;
 }
-
-// Keep track of which questions have been asked
-$questionAsked[]=array_push($randomQuestion);
-
 
 function printQuestion($array,$currentQuestion){
 	// get question number
@@ -42,7 +38,21 @@ function printQuestion($array,$currentQuestion){
 	
 	// Choose a number between 0 and the number of elements in the array.
 	$randomArrayNumber = array_rand($array,1);
+	echo '<h3>'.$randomArrayNumber.'</h3>';
 
+	//Check if question as been displayed
+	if(in_array($randomArrayNumber,$_SESSION['askedQuestions'])){
+		echo 'It is IN the ARRAY';
+	}else{
+		echo 'Not in the array';
+	}
+	
+	// Keep track of which questions have been asked
+	$_SESSION['askedQuestions'][]=$randomArrayNumber;
+	echo '<h3>AFTER</h3> <pre>';
+	var_dump($_SESSION['askedQuestions']);
+	echo '</pre>';
+	
 	// Call the Random Question!
 	$choseQuestion = $array[$randomArrayNumber];
 	
@@ -62,6 +72,7 @@ function printQuestion($array,$currentQuestion){
 	
 	//Print possible answers
 	echo '<form action="index.php?q=' . ($questionNumber+1) . '" method="post">';
+	echo '<input type="hidden" name="id" value="'. $randomArrayNumber .	'" />';
 	echo '<input type="hidden" name="correctAnswer" value="'. $choseQuestion['correctAnswer'] .	'" />';
 	foreach ($possibleAnswers as $answer) {
 		echo '<input type="submit" class="btn" name="answer" value="';
@@ -85,10 +96,10 @@ if(isset($_POST['answer'])){
 }
 
 // Keep track of answers
+
 // If all questions have been asked, give option to show score
 if ($currentQuestion==11){
-			echo '<h2>You\'ve answered ' . $_SESSION['questionsAnsweredCorrectly'] . ' question(s) correctly!</h2>';
- 
+	echo '<h2>You\'ve answered ' . $_SESSION['questionsAnsweredCorrectly'] . ' question(s) correctly!</h2>'; 
 }
 // else give option to move to next question
 
