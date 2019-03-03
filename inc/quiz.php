@@ -16,19 +16,11 @@
  */
 
 // Include questions
-include 'questions.php';
 
 // Keep track of which questions have been asked
-$questionsAsked=array();
-var_dump ($questionsAsked);
 
 // Show which question they are on
-$totalQuestions = 10;
-$currentQuestion = filter_input(INPUT_GET,'currentQuestion',FILTER_SANITIZE_NUMBER_INT);
-$currentQuestion = 1;
-
 // Show random question
-
 // Shuffle answer buttons
 
 
