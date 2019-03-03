@@ -17,21 +17,24 @@
 
 // Include questions
 $_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
-
 //echo $_SESSION['questions'][0]->leftAdder."<br/";
-
-// Keep track of which questions have been asked
-$_SESSION['questionsAsked'][] = $randomArrayNumber;
-
 
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
 if(empty($_SESSION['currentQuestion'])){
 	$_SESSION['currentQuestion']=1;
+	$_SESSION['questionsAsked']=array();
 }
 $_SESSION['totalQuestions']=count($_SESSION['questions']);
 
+// Keep track of which questions have been asked
+do{
+	$randomQuestion = array_rand($_SESSION['questions'],1);
+} while (in_array($randomQuestion,$_SESSION['questionsAsked']));
+$_SESSION['questionsAsked'][] = $randomQuestion;
+
 // Show random question
+
 // Shuffle answer buttons
 
 
