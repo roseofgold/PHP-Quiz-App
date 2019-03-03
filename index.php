@@ -13,7 +13,7 @@ include 'inc/quiz.php';
 <body>
     <div class="container">
         <div id="quiz-box">
-            <p class="breadcrumbs">Question # of #</p>
+            <p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
             <p class="quiz">What is 54 + 71?</p>
             <form action="index.php?q=<?php echo $currentQuestion+1; ?>" method="post">
                 <input type="hidden" name="id" value="0" />
