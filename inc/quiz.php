@@ -21,8 +21,8 @@ $_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
 if(empty($_SESSION['currentQuestion'])){
+	unset($_SESSION['questionsAsked']);
 	$_SESSION['currentQuestion']=1;
-	$_SESSION['questionsAsked']=array();
 	$_SESSION['questionsCorrect'] = 0;
 }
 $_SESSION['totalQuestions']=count($_SESSION['questions']);
@@ -53,6 +53,16 @@ foreach($answers as $answer){
 $studentAnswer = filter_input(INPUT_POST,'answer',FILTER_SANITIZE_NUMBER_INT);
 $correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
 $correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
+$toast = '';
+if(isset($studentAnswer)){
+	$toast .= '<p>You answered ' . $studentAnswer . '</p>';
+	$toast .= '</p>The correct answer is ' . $correctAnswer . '</p>';
+	if($studentAnswer == $correctAnswer){
+		$toast .= '<p>Congrats! You answered correctly.</p>';
+	}else{
+		$toast .= '<p>Sorry! That was incorrect.</p>';
+	}
+}
 
 // Keep track of answers
 // If all questions have been asked, give option to show score
