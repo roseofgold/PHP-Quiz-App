@@ -31,7 +31,7 @@ $_SESSION['totalQuestions']=count($_SESSION['questions']);
 do{
 	$randomQuestion = array_rand($_SESSION['questions'],1);
 } while (in_array($randomQuestion,$_SESSION['questionsAsked']));
-$_SESSION['questionsAsked'][] = array('Question' => $randomQuestion, 'Correct' => $_SESSION['questions'][$randomQuestion]->correctAnswer);
+$_SESSION['questionsAsked'][] = $randomQuestion;
 
 // Show random question
 $leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
@@ -51,12 +51,8 @@ foreach($answers as $answer){
 
 // Toast correct and incorrect answers
 $studentAnswer = filter_input(INPUT_POST,'answer',FILTER_SANITIZE_NUMBER_INT);
-if($studentAnswer == $_SESSION['questionsAsked'][$_SESSION['currentQuestion']-1]['Correct']){
-	$toast = "Correct!";
-	$_SESSION['questionsCorrect'] ++;
-} else{
-	$toast = "Incorrect";
-}
+$correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
+$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
 
 // Keep track of answers
 // If all questions have been asked, give option to show score
