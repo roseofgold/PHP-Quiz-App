@@ -22,6 +22,8 @@ include 'inc/quiz.php';
                 <input type="submit" class="btn" name="answer" value="125" />
                 <input type="submit" class="btn" name="answer" value="115" />
             </form>
+<?php } else { ?>
+			<p>Congrats! You got xx questions right!</p>
 <?php } ?>
         </div>
     </div>
