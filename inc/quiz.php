@@ -38,7 +38,16 @@ $leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
 $rightAdder = $_SESSION['questions'][$randomQuestion]->rightAdder;
 
 // Shuffle answer buttons
-
+$possibleAnswers='';
+$answers=[
+	$_SESSION['questions'][$randomQuestion]->correctAnswer,
+	$_SESSION['questions'][$randomQuestion]->firstIncorrectAnswer,
+	$_SESSION['questions'][$randomQuestion]->secondIncorrectAnswer
+];
+shuffle($answers);
+foreach($answers as $answer){
+	$possibleAnswers .= '<input type="submit" class="btn" name="answer" value="'.$answer.'" />';
+}
 
 // Toast correct and incorrect answers
 // Keep track of answers

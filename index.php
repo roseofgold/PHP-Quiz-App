@@ -18,9 +18,7 @@ include 'inc/quiz.php';
             <p class="quiz">What is <?php echo $leftAdder; ?> + <?php echo $rightAdder; ?>?</p>
             <form action="index.php?q=<?php echo $_SESSION['currentQuestion']+1; ?>" method="post">
                 <input type="hidden" name="id" value="0" />
-                <input type="submit" class="btn" name="answer" value="135" />
-                <input type="submit" class="btn" name="answer" value="125" />
-                <input type="submit" class="btn" name="answer" value="115" />
+                <?php echo $possibleAnswers; ?>
             </form>
 <?php } else { ?>
 			<p>Congrats! You got xx questions right!</p>
