@@ -30,7 +30,8 @@ $_SESSION['totalQuestions']=count($_SESSION['questions']);
 do{
 	$randomQuestion = array_rand($_SESSION['questions'],1);
 } while (in_array($randomQuestion,$_SESSION['questionsAsked']));
-$_SESSION['questionsAsked'][] = $randomQuestion;
+$_SESSION['questionsAsked'][] = array('Question' => $randomQuestion, 'Correct' => $_SESSION['questions'][$randomQuestion]->correctAnswer);
+var_dump($_SESSION['questionsAsked']);
 
 // Show random question
 $leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
