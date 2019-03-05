@@ -14,7 +14,7 @@ include 'inc/quiz.php';
     <div class="container">
         <div id="quiz-box">
 <?php if($_SESSION['currentQuestion'] > $_SESSION['totalQuestions']){?>
-            <p class="breadcrumbs">Congrats! You got xx questions right!</p>
+            <p class="breadcrumbs">Congrats! You got <?php echo $_SESSION['questionsCorrect']; ?> questions right!</p>
 <?php } else { ?>
 			<p><?php echo $toast; ?></p>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>

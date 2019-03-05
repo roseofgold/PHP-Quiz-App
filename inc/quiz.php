@@ -59,6 +59,7 @@ if(isset($studentAnswer)){
 	$toast .= '</p>The correct answer is ' . $correctAnswer . '</p>';
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
+		$_SESSION['questionsCorrect']++;
 	}else{
 		$toast .= '<p>Sorry! That was incorrect.</p>';
 	}
