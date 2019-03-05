@@ -17,7 +17,6 @@
 
 // Include questions
 $_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
-//echo $_SESSION['questions'][0]->leftAdder."<br/";
 
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
@@ -50,6 +49,7 @@ foreach($answers as $answer){
 }
 
 // Toast correct and incorrect answers
+
 // Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
