@@ -29,6 +29,11 @@ $_SESSION['totalQuestions']=count($_SESSION['questions']);
 
 // Keep track of which questions have been asked
 do{
+	/* Still working on how to break here.
+	echo $qAsked = 'qAsked ' . count($_SESSION['questionsAsked']);
+	echo '<br/>total '.$_SESSION['totalQuestions'];
+	if (count($_SESSION['questionsAsked'])>$_SESSION['totalQuestions']){break;}
+	*/
 	$randomQuestion = array_rand($_SESSION['questions'],1);
 } while (in_array($randomQuestion,$_SESSION['questionsAsked']));
 $_SESSION['questionsAsked'][] = $randomQuestion;
