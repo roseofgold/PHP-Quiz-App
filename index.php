@@ -14,7 +14,7 @@ include 'inc/quiz.php';
     <div class="container">
         <div id="quiz-box">
 <?php if($_SESSION['currentQuestion'] == $_SESSION['totalQuestions']){?>
-            <p>Congrats! You got xx questions right!</p>
+            <p class="breadcrumbs">Congrats! You got xx questions right!</p>
 <?php } else { ?>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
             <p class="quiz">What is <?php echo $leftAdder; ?> + <?php echo $rightAdder; ?>?</p>
