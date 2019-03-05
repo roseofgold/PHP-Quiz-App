@@ -21,7 +21,7 @@ $_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
 if(empty($_SESSION['currentQuestion'])){
-	unset($_SESSION['questionsAsked']);
+	$_SESSION['questionsAsked'] = array();
 	$_SESSION['currentQuestion']=1;
 	$_SESSION['questionsCorrect'] = 0;
 }
@@ -52,9 +52,10 @@ foreach($answers as $answer){
 // Toast correct and incorrect answers
 $studentAnswer = filter_input(INPUT_POST,'answer',FILTER_SANITIZE_NUMBER_INT);
 $correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
-$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
+
 $toast = '';
 if(isset($studentAnswer)){
+	$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
 		$_SESSION['questionsCorrect']++;
