@@ -16,7 +16,7 @@ include 'inc/quiz.php';
 <?php if($_SESSION['currentQuestion'] > $_SESSION['totalQuestions']){?>
             <p class="breadcrumbs">Congrats! You got xx questions right!</p>
 <?php } else { ?>
-<p><?php echo $toast; ?></p>
+			<p><?php echo $toast; ?></p>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
             <p class="quiz">What is <?php echo $leftAdder; ?> + <?php echo $rightAdder; ?>?</p>
             <form action="index.php?q=<?php echo $_SESSION['currentQuestion']+1; ?>" method="post">
