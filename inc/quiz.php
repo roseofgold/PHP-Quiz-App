@@ -55,13 +55,13 @@ $correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
 $correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
 $toast = '';
 if(isset($studentAnswer)){
-	$toast .= '<p>You answered ' . $studentAnswer . '</p>';
-	$toast .= '</p>The correct answer is ' . $correctAnswer . '</p>';
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
 		$_SESSION['questionsCorrect']++;
 	}else{
 		$toast .= '<p>Sorry! That was incorrect.</p>';
+		$toast .= '<p>You answered ' . $studentAnswer . '</p>';
+		$toast .= '</p>The correct answer is ' . $correctAnswer . '</p>';
 	}
 }
 
