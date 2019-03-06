@@ -28,12 +28,10 @@ if(empty($_SESSION['currentQuestion'])){
 $_SESSION['totalQuestions']=count($_SESSION['questions']);
 
 // Keep track of which questions have been asked
+$randomQuestion = 0;
 do{
-	/* Still working on how to break here.
-	echo $qAsked = 'qAsked ' . count($_SESSION['questionsAsked']);
-	echo '<br/>total '.$_SESSION['totalQuestions'];
-	if (count($_SESSION['questionsAsked'])>$_SESSION['totalQuestions']){break;}
-	*/
+	// break if all questions have been asked.
+	if ($_SESSION['currentQuestion']==$_SESSION['totalQuestions']){break;}
 	$randomQuestion = array_rand($_SESSION['questions'],1);
 } while (in_array($randomQuestion,$_SESSION['questionsAsked']));
 $_SESSION['questionsAsked'][] = $randomQuestion;
@@ -63,6 +61,7 @@ if(isset($studentAnswer)){
 	$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
+		// Keep track of answers
 		$_SESSION['questionsCorrect']++;
 	}else{
 		$toast .= '<p>Sorry! That was incorrect.</p>';
@@ -71,7 +70,6 @@ if(isset($studentAnswer)){
 	}
 }
 
-// Keep track of answers
 // If all questions have been asked, give option to show score
 // else give option to move to next question
 
