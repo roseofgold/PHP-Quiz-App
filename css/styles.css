@@ -22,6 +22,8 @@ body {
   line-height: .5;
   border:1px solid white;
   padding:1em;
+  background: #0204FF;
+  text-align:center;
 }
 
 .quiz {
@@ -59,7 +61,7 @@ body {
 }
 
 .btn {
-  width: 12em;
+  width: 10em;
   display: inline-block;
   bottom: 150px;
   border-radius: 4px;
@@ -70,6 +72,7 @@ body {
   margin: 10px;
   transition: .5s ;
   text-decoration: none;
+  font-size:1.5em;
 }
 .btn:hover {
   background-color: #FFF;
