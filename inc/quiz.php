@@ -27,14 +27,18 @@ if(empty($_SESSION['currentQuestion'])){
 }
 $_SESSION['totalQuestions']=count($_SESSION['questions']);
 
-// Keep track of which questions have been asked
+// Keep track of which equations have been asked
 $randomQuestion = 0;
-do{
-	// break if all questions have been asked.
-	if ($_SESSION['currentQuestion']==$_SESSION['totalQuestions']){break;}
-	$randomQuestion = array_rand($_SESSION['questions'],1);
-} while (in_array($randomQuestion,$_SESSION['questionsAsked']));
-$_SESSION['questionsAsked'][] = $randomQuestion;
+
+// break if all equations have been asked.
+if ($_SESSION['currentQuestion']<=$_SESSION['totalQuestions']){
+
+// Select a random equations
+	do{
+		$randomQuestion = array_rand($_SESSION['questions'],1);
+	} while (in_array($randomQuestion,$_SESSION['questionsAsked']));
+	$_SESSION['questionsAsked'][] = $randomQuestion;
+}
 
 // Show random question
 $leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
@@ -58,6 +62,7 @@ $correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
 
 $toast = '';
 if(isset($studentAnswer)){
+	$toast = '<div class="toast">';
 	$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
@@ -68,6 +73,7 @@ if(isset($studentAnswer)){
 		$toast .= '<p>You answered ' . $studentAnswer . '</p>';
 		$toast .= '</p>The correct answer is ' . $correctAnswer . '</p>';
 	}
+	$toast .= '</div>';
 }
 
 // If all questions have been asked, give option to show score
