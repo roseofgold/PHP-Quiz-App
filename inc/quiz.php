@@ -16,7 +16,9 @@
  */
 
 // Include questions
-$_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'));
+$_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'),true);
+include 'inc/generate_questions.php';
+//$_SESSION['questions'] = generateAdvancedQuestions();
 
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
@@ -41,15 +43,15 @@ if ($_SESSION['currentQuestion']<=$_SESSION['totalQuestions']){
 }
 
 // Show random question
-$leftAdder = $_SESSION['questions'][$randomQuestion]->leftAdder;
-$rightAdder = $_SESSION['questions'][$randomQuestion]->rightAdder;
+$leftAdder = $_SESSION['questions'][$randomQuestion]['leftAdder'];
+$rightAdder = $_SESSION['questions'][$randomQuestion]['rightAdder'];
 
 // Shuffle answer buttons
 $possibleAnswers='';
 $answers=[
-	$_SESSION['questions'][$randomQuestion]->correctAnswer,
-	$_SESSION['questions'][$randomQuestion]->firstIncorrectAnswer,
-	$_SESSION['questions'][$randomQuestion]->secondIncorrectAnswer
+	$_SESSION['questions'][$randomQuestion]['correctAnswer'],
+	$_SESSION['questions'][$randomQuestion]['firstIncorrectAnswer'],
+	$_SESSION['questions'][$randomQuestion]['secondIncorrectAnswer']
 ];
 shuffle($answers);
 foreach($answers as $answer){
@@ -63,7 +65,7 @@ $correctAnswerID = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
 $toast = '';
 if(isset($studentAnswer)){
 	$toast = '<div class="toast">';
-	$correctAnswer = $_SESSION['questions'][$correctAnswerID]->correctAnswer;
+	$correctAnswer = $_SESSION['questions'][$correctAnswerID]['correctAnswer'];
 	if($studentAnswer == $correctAnswer){
 		$toast .= '<p>Congrats! You answered correctly.</p>';
 		// Keep track of answers
