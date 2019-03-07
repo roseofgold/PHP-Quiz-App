@@ -26,6 +26,12 @@ body {
   text-align:center;
 }
 
+.toast{
+	background: red;
+	line-height:1;
+	padding:.5em;
+}
+
 .quiz {
   font-size: 4rem;
   font-weight: 400;
