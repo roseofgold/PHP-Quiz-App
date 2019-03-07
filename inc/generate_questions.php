@@ -33,5 +33,5 @@ for($i=0;$i<10;$i++){
 		"firstIncorrectAnswer" => $incorrect1,
 		"secondIncorrectAnswer" => $incorrect2
 	];
-echo '<pre>';var_dump($randomNumbers);echo '</pre>';
+//echo '<pre>';var_dump($randomNumbers);echo '</pre>';
 }
