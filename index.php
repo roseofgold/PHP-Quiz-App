@@ -21,7 +21,7 @@ include 'inc/quiz.php';
 				<input type="submit" class="btn" value="Try Again" />
 			</form>
 <?php } else { ?>
-			<p><?php echo $toast; ?></p>
+			<div class="toast"><?php echo $toast; ?></div>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
             <p class="quiz">What is <?php echo $leftAdder; ?> + <?php echo $rightAdder; ?>?</p>
             <form action="index.php?q=<?php echo $_SESSION['currentQuestion']+1; ?>" method="post">
