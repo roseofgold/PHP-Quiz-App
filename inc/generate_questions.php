@@ -1,37 +1,41 @@
 <?php
-// Generate random questions
-$randomNumbers = array();
+function generateAdvancedQuestions(){
+	// Generate random questions
+	$randomNumbers = array();
 
-// Loop for required number of questions
-for($i=0;$i<10;$i++){
+	// Loop for required number of questions
+	for($i=0;$i<10;$i++){
 
-// Get random numbers to add
-	$randNum1 = rand(100,199);
-	$randNum2 = rand(1,99);
+	// Get random numbers to add
+		$randNum1 = rand(100,199);
+		$randNum2 = rand(1,99);
 
-// Calculate correct answer
-	$correct = $randNum1 + $randNum2;
+	// Calculate correct answer
+		$correct = $randNum1 + $randNum2;
 
-// Get incorrect answers within 10 numbers either way of correct answer
-// Make sure it is a unique answer
-	$incorrect1 = rand(($correct-10),($correct+10));
-	while ($incorrect1 == $correct){
+	// Get incorrect answers within 10 numbers either way of correct answer
+	// Make sure it is a unique answer
 		$incorrect1 = rand(($correct-10),($correct+10));
+		while ($incorrect1 == $correct){
+			$incorrect1 = rand(($correct-10),($correct+10));
+		}
+		
+		$incorrect2 = rand(($correct-10),($correct+10));
+		while ($incorrect1 == $correct || $incorrect2 == $correct){
+			$incorrect1 = rand(($correct-10),($correct+10));
+		}
+
+
+	// Add question and answer to questions array
+		$randomNumbers[]=[
+			"leftAdder" => $randNum1,
+			"rightAdder" => $randNum2,
+			"correctAnswer" => $correct,
+			"firstIncorrectAnswer" => $incorrect1,
+			"secondIncorrectAnswer" => $incorrect2
+		];
+	//echo '<pre>';var_dump($randomNumbers);echo '</pre>';
 	}
 	
-	$incorrect2 = rand(($correct-10),($correct+10));
-	while ($incorrect1 == $correct || $incorrect2 == $correct){
-		$incorrect1 = rand(($correct-10),($correct+10));
-	}
-
-
-// Add question and answer to questions array
-	$randomNumbers[]=[
-		"leftAdder" => $randNum1,
-		"rightAdder" => $randNum2,
-		"correctAnswer" => $correct,
-		"firstIncorrectAnswer" => $incorrect1,
-		"secondIncorrectAnswer" => $incorrect2
-	];
-echo '<pre>';var_dump($randomNumbers);echo '</pre>';
+	return $randomNumbers;
 }
