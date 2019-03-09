@@ -34,8 +34,10 @@ function generateAdvancedQuestions(){
 			"firstIncorrectAnswer" => $incorrect1,
 			"secondIncorrectAnswer" => $incorrect2
 		];
-	//echo '<pre>';var_dump($randomNumbers);echo '</pre>';
 	}
 	
-	return $randomNumbers;
+//write results to json file
+	$fp = fopen('inc/questions.json', 'w');
+	fwrite($fp, json_encode($randomNumbers));
+	fclose($fp);
 }
