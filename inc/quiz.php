@@ -16,9 +16,11 @@
  */
 
 // Include questions
+if(empty($_SESSION['currentQuestion'])){
+	include 'inc/generate_questions.php';
+	generateAdvancedQuestions();
+}
 $_SESSION['questions'] = json_decode(file_get_contents('inc/questions.json'),true);
-include 'inc/generate_questions.php';
-//$_SESSION['questions'] = generateAdvancedQuestions();
 
 // Show which question they are on
 $_SESSION['currentQuestion']=filter_input(INPUT_GET,'q',FILTER_SANITIZE_NUMBER_INT);
