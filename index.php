@@ -24,10 +24,6 @@ include 'inc/quiz.php';
                 <input type="hidden" name="id" value="0" />
 				<input type="submit" class="btn" value="Try Again" />
 			</form>
-			<form action="index.php?a=1" method="post">
-                <input type="hidden" name="id" value="0" />
-				<input type="submit" class="btn" value="Try Again" />
-			</form>
 <?php } else { ?>
 			<?php echo $toast; ?>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
