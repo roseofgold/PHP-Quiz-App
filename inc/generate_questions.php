@@ -7,7 +7,7 @@ function generateAdvancedQuestions(){
 	for($i=0;$i<10;$i++){
 
 	// Get random numbers to add
-		$randNum1 = rand(100,199);
+		$randNum1 = rand(1,99);
 		$randNum2 = rand(1,99);
 
 	// Calculate correct answer
