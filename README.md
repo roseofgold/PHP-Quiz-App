@@ -1,2 +1,2 @@
 # PHP-Quiz-App
-Repo for the PHP Unit 2 Project
+A simple math quiz that can be taken several times.
