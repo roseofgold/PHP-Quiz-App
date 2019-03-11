@@ -21,8 +21,7 @@ function generateAdvancedQuestions(){
 		}
 		
 		$incorrect2 = rand(($correct-10),($correct+10));
-		while ($incorrect1 == $correct || $incorrect2 == $correct){
-			$incorrect1 = rand(($correct-10),($correct+10));
+			$incorrect2 = rand(($correct-10),($correct+10));
 		}
 
 
