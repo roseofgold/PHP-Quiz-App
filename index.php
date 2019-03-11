@@ -24,6 +24,7 @@ include 'inc/quiz.php';
                 <input type="hidden" name="id" value="0" />
 				<input type="submit" class="btn" value="Try Again" />
 			</form>
+			<?php session_destroy(); ?>
 <?php } else { ?>
 			<?php echo $toast; ?>
 			<p class="breadcrumbs">Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $_SESSION['totalQuestions'];?></p>
