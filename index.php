@@ -1,5 +1,4 @@
 <?php
-//ini_set("display_errors", "on");
 session_start();
 include 'inc/quiz.php';
 ?><!DOCTYPE html>
