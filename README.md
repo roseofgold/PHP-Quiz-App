@@ -5,11 +5,10 @@ The purpose of this application is to test basic understanding of PHP syntax and
 
 ## Features
 * This app starts with an equation (e.g. “What is 48 + 12?”)
-* Equations are dynamically generated without the use of a static question bank.
-* Each question will have three answers to choose from.
-* Answers are shuffled so that the correct answer is not always in the same position.
-* A toast will be displayed stating whether the equation is answered correctly or incorrectly.
-* After a toast is displayed the next question will be shown.
+* Equations are dynamically generated.
+* Each question will have three answers from which to choose.
+* The correct answer is not always in the same position.
+* User will be notified of correct or incorrect answer.
 * Once all questions have been answered the final score will be displayed.
 * The user may choose to start the quiz again.
 
